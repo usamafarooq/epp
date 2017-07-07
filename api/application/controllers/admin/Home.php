@@ -40,6 +40,10 @@ class Auth extends Main_Controller {
             	echo json_encode($msg);
             }
         }
+        else{
+        	$msg = ['msg'=>'username or password is incorrect','success'=>false];
+            	echo json_encode($msg);
+        }
 	}
 
 
