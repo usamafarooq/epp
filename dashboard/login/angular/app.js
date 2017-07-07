@@ -1,4 +1,4 @@
-var app = angular.module('dashboardApp', ['ngRoute']);
+var app = angular.module('loginApp', ['ngRoute']);
 var l = window.location;
 var base_url = l.protocol + "//" + l.host + "/" + l.pathname.split('/')[1];
 var url = base_url;
@@ -8,7 +8,7 @@ var api = base_url + '/api/';
 app.config(['$routeProvider', function($routeProvider) {
     $routeProvider
     .when("/", {
-        templateUrl : "pages/dashboard.html",
-        controller : 'dashboardController'
+        templateUrl : "pages/login.html",
+        controller : 'loginController'
     });
 }]);

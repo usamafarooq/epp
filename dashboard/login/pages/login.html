@@ -1,0 +1,31 @@
+<div class="container">
+    	<div class="row">
+    	<div class="col-lg-4 col-lg-offset-4">
+        	<h3 class="text-center">Braio</h3>
+            <p class="text-center">Sign in to get in touch</p>
+            <hr class="clean">
+        	<form role="form" ng-submit="loginForm()" method="post">
+              <div class="form-group input-group">
+              	<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                <input type="email" class="form-control"  placeholder="Email Adress" ng-model="email">
+              </div>
+              <div class="form-group input-group">
+              	<span class="input-group-addon"><i class="fa fa-key"></i></span>
+                <input type="text" class="form-control"  placeholder="Password" ng-model="password">
+              </div>
+              <div class="form-group">
+                <label class="cr-styled">
+                    <input type="checkbox" ng-model="todo.done">
+                    <i class="fa"></i> 
+                </label>
+                Remember me
+              </div>
+        	  <button type="submit" class="btn btn-purple btn-block">Sign in</button>
+            </form>
+            <hr>
+            
+            <p class="text-center text-gray">Dont have account yet!</p>
+            <button type="submit" class="btn btn-default btn-block">Create Account</button>
+        </div>
+        </div>
+    </div>
