@@ -11,14 +11,13 @@ class Auth extends Main_Controller {
 	{
 		$postdata = file_get_contents("php://input");
         $request = json_decode($postdata);
-       	$role             = $request->role;
 		$email = $request->email;
 		$password = $request->password;
 		// $username = $request->username;
 		$table = 'user';
         $select = array('*');
         $where = array('(email = "'.$email.'" OR username = "'.$email.')" AND password = "'.$password.'"');
-        $user = $this->Sms_Model->get_table_data($table,$select,$where,false);
+        $user = $this->my_model->get_table_data($table,$select,$where,false);
         if(!empty($user)) {
             if ($user['is_verified'] == 1) 
             {
