@@ -1,16 +1,16 @@
 app.controller('loginController',  function($scope, $window, $location, $http) {   
-	$scope.postForm = function() {                
+	$scope.loginForm = function() {                
         $http({
             method: 'POST',
-            url: api + 'admin/auth/',
+            url: api + 'admin/home/',
             data: {
                 email: $scope.email,
                 password: $scope.password,
             },
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         })
-        .success(function(data) {
-            if ( data.success == 'true') {
+        .then(function(data) {
+            if ( data.data.success == true) {
                 $window.location.href = dashboard;
             } 
             else {
