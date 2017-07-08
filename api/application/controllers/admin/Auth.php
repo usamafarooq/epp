@@ -9,24 +9,40 @@ class Auth extends Main_Controller {
 
 	public function index()
 	{
-		// $postdata = file_get_contents("php://input");
-  //       $request = json_decode($postdata);
- //       $role             = $request->role;
-		// $email = $this->input->post('email');
-		// $password = $this->input->post('password');
-		// $table = 'user';
-  //       $select = array('*');
-  //       $where = array('email = "'.$email.'" OR username = "'.$username.'" AND password = "'.$password.'" AND disable = "0"');
-  //       $user = $this->Sms_Model->get_table_data($table,$select,$where,false);
-  //       if(!empty($user)) {
-  //           $this->session->set_userdata(array(
-		// 		'email' => $user['email'],
-		// 		'username' => $user['username'],
-		// 		'role' => $user['role_id'],
-		// 		'id' => $user['id'],
-		// 	));
-		// 	redirect('dashboard', 'refresh');	
-  //       }
+		$postdata = file_get_contents("php://input");
+        $request = json_decode($postdata);
+		
+		$email = $request->email;
+		$password = $request->password;
+		$table = 'user';
+        $select = array('*');
+        $where = array('(email = "'.$email.'" OR username = "'.$email.')" AND password = "'.$password.'"');
+        $user = $this->my_model->get_table_data($table,$select,$where,false);
+        if(!empty($user)) {
+            if ($user['is_verified'] == 1) 
+            {
+	            $this->session->set_userdata(array(
+					'is_login' => TRUE,
+					'id' => $user['id'],
+					'username' => $user['username'],
+					'email' => $user['email'],
+					'user_role' => $user['user_role_id'],
+					'user_type' => $user['user_type_id'],
+				));
+
+				$msg = ['msg'=>'user is logged in','success'=>true];
+            	echo json_encode($msg);
+            }
+            else
+            {
+            	$msg = ['msg'=>'email not verrified','success'=>false];
+            	echo json_encode($msg);
+            }
+        }
+        else{
+        	$msg = ['msg'=>'username or password is incorrect','success'=>false];
+            	echo json_encode($msg);
+        }
 	}
 
 
