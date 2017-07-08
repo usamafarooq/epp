@@ -7,7 +7,7 @@
         	<form role="form" ng-submit="loginForm()" method="post">
               <div class="form-group input-group">
               	<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                <input type="email" class="form-control"  placeholder="Email Adress" ng-model="email">
+                <input type="email" class="form-control"  placeholder="Email Address and Username" ng-model="email">
               </div>
               <div class="form-group input-group">
               	<span class="input-group-addon"><i class="fa fa-key"></i></span>
@@ -20,6 +20,12 @@
                 </label>
                 Remember me
               </div>
+             <div class="col-md-12 col-sm-12 col-xs-12">
+                                            <div class="alert alert-warning" ng-show="errorMsg">
+                                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                                                <span class="glyphicon glyphicon-hand-right"></span>&nbsp;&nbsp;{{errorMsg}}
+                                            </div>
+                                        </div>
         	  <button type="submit" class="btn btn-purple btn-block">Sign in</button>
             </form>
             <hr>
